@@ -45,7 +45,34 @@
 			</div>
 		</nav>
 		<div class="container mt-5">
-			<h2 class="text-center">CRUD Producto</h2>
+			<h2 class="text-center">PRODUCTOS</h2>
+			<hr />
+			<div class="row">
+				<div class="col-4">
+					<div class="card text-white bg-primary mb-3">
+						<div class="card-body">
+							<h5 class="card-title">Valor total del inventario</h5>
+							<p id="invTotal" class="card-text"></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="card text-white bg-primary mb-3">
+						<div class="card-body">
+							<h5 class="card-title">Producto de mayor valor</h5>
+							<p id="maxProduct" class="card-text"></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="card text-white bg-primary mb-3">
+						<div class="card-body">
+							<h5 class="card-title">Producto de menor valor</h5>
+							<p id="minProduct" class="card-text"></p>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-6">
 					<div class="form-group">
@@ -127,7 +154,7 @@
 							<th class="text-center">Acciones</th>
 						</tr>
 					</thead>
-					<tbody id="productList">
+					<tbody class="tbody-scroll" id="productList">
 						<!-- Productos se insertarán aquí -->
 					</tbody>
 				</table>

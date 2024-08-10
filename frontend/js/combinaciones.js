@@ -5,12 +5,12 @@ class CombinationsServices {
 			status: "",
 			data: null,
 		};
-		this.url = "http://localhost/test_fullstack/backend/combinations";
+		this.url = "http://localhost/test_fullstack";
 	}
 
 	async searchProductCombinacion(maxValue) {
 		try {
-			const resp = await fetch(`${this.url}/${maxValue}`);
+			const resp = await fetch(`${this.url}/combinations/${maxValue}`);
 			if (!resp.ok) {
 				this.response = {
 					status: 500,

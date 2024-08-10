@@ -39,6 +39,7 @@ y remplazar el valor por el path relativo del proyecto en el servidor, es decir:
 - El frontend se encuentra en la carpeta **frontend**
 - No necesita configuracion previa.
 - Debe tener acceso a internet ya que se utilizan CDN de bootstrap y jquery, sin no tiene acceso el proyecto no funcionara
+- En los archivos 'js/combinaciones.js' y 'js/productos.js' cambiar el valor de la variable dentro del constructor 'this.url' por la ruta general del proyecto backend
 
 [========]
 

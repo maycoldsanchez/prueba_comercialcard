@@ -7,12 +7,12 @@ class ProductServices {
 			status: "",
 			data: null,
 		};
-		this.url = "http://localhost/test_fullstack/backend/productos";
+		this.url = "http://localhost/test_fullstack";
 	}
 
 	async getData() {
 		try {
-			const resp = await fetch(this.url);
+			const resp = await fetch(`${this.url}/productos`);
 			if (!resp.ok) {
 				this.response = {
 					status: 500,
@@ -42,7 +42,7 @@ class ProductServices {
 				},
 				body: JSON.stringify(data),
 			};
-			const resp = await fetch(this.url, options);
+			const resp = await fetch(`${this.url}/productos`, options);
 			if (!resp.ok) {
 				this.response = {
 					status: 500,
@@ -72,7 +72,7 @@ class ProductServices {
 				},
 				body: JSON.stringify(data),
 			};
-			const resp = await fetch(`${this.url}/${id}`, options);
+			const resp = await fetch(`${this.url}/productos/${id}`, options);
 			if (!resp.ok) {
 				this.response = {
 					status: 500,
@@ -101,7 +101,7 @@ class ProductServices {
 					"Content-Type": "application/json",
 				},
 			};
-			const resp = await fetch(`${this.url}/${id}`, options);
+			const resp = await fetch(`${this.url}/productos/${id}`, options);
 			if (!resp.ok) {
 				this.response = {
 					status: 500,
@@ -156,10 +156,26 @@ function saveProduct() {
 	$("#productModal").modal("hide");
 }
 
+function infoInventario() {
+	const invTotal = products.reduce(
+		(sum, product) =>
+			parseInt(sum) + parseInt(product.precio * product.cantidad),
+		0
+	);
+	const maxProduct = products.sort((a, b) => b.precio - a.precio)[0];
+	const minProduct = products.sort((a, b) => a.precio - b.precio)[0];
+	document.getElementById("invTotal").innerHTML = `$ ${invTotal}`;
+	document.getElementById(
+		"maxProduct"
+	).innerHTML = `${maxProduct.nombre} - $ ${maxProduct.precio}`;
+	document.getElementById(
+		"minProduct"
+	).innerHTML = `${minProduct.nombre} - $ ${minProduct.precio}`;
+}
+
 function renderProducts() {
 	const productList = document.getElementById("productList");
 	productList.innerHTML = "";
-
 	productsFilter.forEach((product) => {
 		const row = document.createElement("tr");
 		row.innerHTML = `
@@ -179,6 +195,7 @@ function renderProducts() {
             `;
 		productList.appendChild(row);
 	});
+	infoInventario();
 }
 
 function deleteProduct() {
